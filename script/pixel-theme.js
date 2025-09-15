@@ -454,6 +454,23 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = window.PixelTheme;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click effect to cards
+    document.querySelectorAll('.card-pixel').forEach(card => {
+        card.addEventListener('click', function() {
+            PixelTheme.glitch(this);
+            PixelTheme.beep(800, 150);
+        });
+    });
+
+    // Download page welcome effect
+    setTimeout(() => {
+        PixelTheme.burst(25);
+    }, 800);
+});
+
+
 /**
  * 使用例とAPI Documentation
  * 

@@ -547,6 +547,36 @@ body {
     }
 }
 
+ /* Hide scrollbar completely */
+.screenshot-container {
+    overflow: hidden !important;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.screenshot-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Auto scroll animation - smooth infinite loop */
+@keyframes autoScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-645px * 5));
+    }
+}
+
+.screenshot-track {
+    animation: autoScroll 45s infinite linear !important;
+    will-change: transform;
+}
+
+/* Pause animation on hover */
+.screenshot-container:hover .screenshot-track {
+        animation-play-state: paused !important;
+}
 
 @font-face {
    font-family: 'PixelMplus10-Bold';
