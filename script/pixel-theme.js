@@ -453,22 +453,22 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click effect to cards
-    document.querySelectorAll('.card-pixel').forEach(card => {
-        card.addEventListener('click', function() {
-            PixelTheme.glitch(this);
-            PixelTheme.beep(800, 150);
-        });
-    });
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Add click effect to cards
+//     document.querySelectorAll('.card-pixel').forEach(card => {
+//         card.addEventListener('click', function() {
+//             PixelTheme.glitch(this);
+//             PixelTheme.beep(800, 150);
+//         });
+//     });
 
-    // Download page welcome effect
-    setTimeout(() => {
-        if (window.PixelTheme && pixelThemeInstance.isInitialized) {
-            window.PixelTheme.burst(25);
-        }
-    }, 100);
-});
+//     // Download page welcome effect
+//     setTimeout(() => {
+//         if (window.PixelTheme && pixelThemeInstance.isInitialized) {
+//             window.PixelTheme.burst(25);
+//         }
+//     }, 100);
+// });
 
 /**
  * 使用例とAPI Documentation
@@ -532,6 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * - .arcade-frame: アーケードフレーム（自動生成可能）
 
  */
+
 
 
 
