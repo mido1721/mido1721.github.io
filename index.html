@@ -41,7 +41,7 @@
             <div class="text-center m-2xl">
                 <h2 class="text-xl text-glow m-xl">FEATURED APPLICATION</h2>
             </div>
-            
+
             <div class="card-pixel card-glowing" style="max-width: 800px; margin: 0 auto;">
                 <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
                     <div class="text-center">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div>
                         <h3 class="text-lg text-primary m-md">GRIMORIA [Android]</h3>
                         <p class="text-sm text-secondary m-md">書籍管理アプリケーション</p>
@@ -60,7 +60,7 @@
                             書籍のバーコードでの登録や統計機能など、「登録・管理」に重点を置いたアプリです。
                             現在はAndroidタブレットのみをサポートしています。
                         </p>
-                        
+
                         <div class="flex" style="gap: 15px; margin-top: 20px;">
                             <a href="app_page/grimoria/download.html" class="btn-arcade" onclick="PixelTheme.burst(15)">
                                 DOWNLOAD NOW
@@ -81,7 +81,7 @@
             <div class="text-center m-2xl">
                 <h2 class="text-xl text-glow m-xl">ABOUT DEVELOPER</h2>
             </div>
-            
+
             <div class="card-pixel" style="max-width: 600px; margin: 0 auto;">
                 <div class="text-center">
                     <div class="pixel-icon animated" style="width: 80px; height: 80px; margin: 0 auto 20px;">
@@ -103,11 +103,11 @@
             <div class="text-center m-2xl">
                 <h2 class="text-xl text-glow m-xl">GET IN TOUCH</h2>
             </div>
-            
+
             <div class="card-pixel" style="max-width: 500px; margin: 0 auto;">
                 <div class="text-center">
                     <p class="text-sm m-lg">ご質問、フィードバック、バグ報告などはこちらから</p>
-                    
+
                     <div class="flex-center" style="gap: 15px; margin-top: 30px;">
                         <button class="btn-pixel" onclick="window.open('https://forms.gle/YXKyys1XvuqQwMi77', '_blank'); PixelTheme.burst(20); PixelTheme.beep(600, 100);">
                             INQUIRY
@@ -128,61 +128,51 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script/pixel-theme.js" defer></script>
-    <script defer>
-        window.addEventListener("load", function() {
-            if (window.PixelTheme && typeof PixelTheme.init === "function") {
-                // Initialize Pixel Theme
-                PixelTheme.init({
-                    enableScanlines: true,
-                    enableArcadeFrame: true,
-                    enableParticles: true,
-                    enableGlitchEffect: true,
-                    enableCounterAnimation: true,
-                    enableSmoothScroll: true,
-                    enableSoundEffects: true,
-                    particleInterval: 3000,
-                    glitchInterval: 5000,
-                    debug: false
+    <script src="script/pixel-theme.js"></script>
+    <script>
+        // Initialize Pixel Theme
+        PixelTheme.init({
+            enableScanlines: true,
+            enableArcadeFrame: true,
+            enableParticles: true,
+            enableGlitchEffect: true,
+            enableCounterAnimation: true,
+            enableSmoothScroll: true,
+            enableSoundEffects: true,
+            particleInterval: 3000,
+            glitchInterval: 5000,
+            debug: false
+        });
+
+        // Custom interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effect to cards
+            document.querySelectorAll('.card-pixel').forEach(card => {
+                card.addEventListener('click', function() {
+                    PixelTheme.glitch(this);
+                    PixelTheme.beep(800, 150);
                 });
-        
-                // Add click effect to cards
-                document.querySelectorAll('.card-pixel').forEach(card => {
-                    card.addEventListener('click', function() {
-                        PixelTheme.glitch(this);
-                        PixelTheme.beep(800, 150);
-                    });
-                });
-        
-                // Welcome effect
-                setTimeout(() => {
-                    PixelTheme.burst(30);
-                }, 1000);
-        
-                // Periodic particle effects
-                setInterval(() => {
-                    if (Math.random() > 0.7) {
-                        PixelTheme.burst(5);
-                    }
-                }, 8000);
-        
-                // Navigation smooth scroll with sound effects
-                document.querySelectorAll('.nav-pixel a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        PixelTheme.beep(1000, 80);
-                    });
-                });
-        
-            } else {
-                console.error("PixelTheme が正しく読み込まれていません");
-            }
+            });
+
+            // Welcome effect
+            setTimeout(() => {
+                PixelTheme.burst(30);
+            }, 1000);
+
+            // Periodic particle effects
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    PixelTheme.burst(5);
+                }
+            }, 8000);
+        });
+
+        // Navigation smooth scroll with sound effects
+        document.querySelectorAll('.nav-pixel a').forEach(link => {
+            link.addEventListener('click', function() {
+                PixelTheme.beep(1000, 80);
+            });
         });
     </script>
-
 </body>
 </html>
-
-
-
-
-
