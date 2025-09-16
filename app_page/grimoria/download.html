@@ -212,42 +212,46 @@
     <!-- Scripts -->
     <script src="../../script/pixel-theme.js"></script>
     <script>
-        // Initialize Pixel Theme
-        PixelTheme.init({
-            enableScanlines: true,
-            enableArcadeFrame: true,
-            enableParticles: true,
-            enableGlitchEffect: true,
-            enableCounterAnimation: true,
-            enableSmoothScroll: true,
-            enableSoundEffects: true,
-            particleInterval: 4000,
-            glitchInterval: 6000,
-            debug: false
-        });
-
-        // Custom interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click effect to cards
-            document.querySelectorAll('.card-pixel').forEach(card => {
-                card.addEventListener('click', function() {
-                    PixelTheme.glitch(this);
-                    PixelTheme.beep(800, 150);
+            if (window.PixelTheme && typeof window.PixelTheme.init === 'function') {
+                window.PixelTheme.init({
+                    enableScanlines: true,
+                    enableArcadeFrame: false,
+                    enableParticles: true,
+                    enableGlitchEffect: true,
+                    enableCounterAnimation: true,
+                    enableSmoothScroll: true,
+                    enableSoundEffects: false,
+                    particleInterval: 3000,
+                    glitchInterval: 5000,
+                    debug: false
                 });
-            });
-
-            // Download page welcome effect
-            setTimeout(() => {
-                PixelTheme.burst(25);
-            }, 800);
-        });
-
-        // Navigation smooth scroll with sound effects
-        document.querySelectorAll('.nav-pixel a').forEach(link => {
-            link.addEventListener('click', function() {
-                PixelTheme.beep(1000, 80);
-            });
+                
+                document.querySelectorAll('.card-pixel').forEach(card => {
+                    card.addEventListener('click', function() {
+                        window.PixelTheme.glitch(this);
+                        window.PixelTheme.beep(800, 150);
+                    });
+                });
+        
+                document.querySelectorAll('.nav-pixel a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        window.PixelTheme.beep(1000, 80);
+                    });
+                });
+        
+                setTimeout(() => window.PixelTheme.burst(30), 1000);
+                
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        window.PixelTheme.burst(5);
+                    }
+                }, 8000);
+            } else {
+                console.error('window.PixelTheme is not available or init method is missing');
+            }
         });
     </script>
 </body>
+
 </html>
