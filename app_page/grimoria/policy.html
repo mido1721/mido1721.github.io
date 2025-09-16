@@ -236,22 +236,20 @@
     <!-- Scripts -->
     <script src="pixel-theme.js"></script>
     <script>
-        // Initialize Pixel Theme
-        PixelTheme.init({
-            enableScanlines: true,
-            enableArcadeFrame: true,
-            enableParticles: true,
-            enableGlitchEffect: true,
-            enableCounterAnimation: false,
-            enableSmoothScroll: true,
-            enableSoundEffects: true,
-            particleInterval: 5000,
-            glitchInterval: 8000,
-            debug: false
-        });
-
         // Custom interactions
         document.addEventListener('DOMContentLoaded', function() {
+            PixelTheme.init({
+                enableScanlines: true,
+                enableArcadeFrame: false,
+                enableParticles: false,
+                enableGlitchEffect: true,
+                enableCounterAnimation: false,
+                enableSmoothScroll: true,
+                enableSoundEffects: false,
+                particleInterval: 5000,
+                glitchInterval: 8000,
+                debug: false
+            });
             // Add click effect to cards
             document.querySelectorAll('.card-pixel').forEach(card => {
                 card.addEventListener('click', function() {
@@ -305,4 +303,5 @@
         });
     </script>
 </body>
+
 </html>
