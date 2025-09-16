@@ -470,6 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 800);
 });
 
+window.PixelTheme = new PixelTheme();
 
 /**
  * 使用例とAPI Documentation
@@ -531,4 +532,5 @@ document.addEventListener('DOMContentLoaded', function() {
  * - .stat-number, [data-counter]: カウンターアニメーション対象
  * - .scanlines: スキャンライン（自動生成可能）
  * - .arcade-frame: アーケードフレーム（自動生成可能）
+
  */
