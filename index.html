@@ -129,9 +129,10 @@
 
     <!-- Scripts -->
     <script src="script/pixel-theme.js" defer></script>
+    <script src="script/pixel-theme.js" defer></script>
     <script defer>
         window.addEventListener("load", function() {
-            if (typeof window.PixelTheme !== "undefined" && PixelTheme.init) {
+            if (window.PixelTheme) {
                 // Initialize Pixel Theme
                 PixelTheme.init({
                     enableScanlines: true,
@@ -172,12 +173,15 @@
                         PixelTheme.beep(1000, 80);
                     });
                 });
+        
             } else {
                 console.error("PixelTheme が読み込まれませんでした");
             }
         });
     </script>
+
 </body>
 </html>
+
 
 
