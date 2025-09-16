@@ -131,11 +131,10 @@
     <script src="script/pixel-theme.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 明示的にwindow.PixelThemeを使用
             if (window.PixelTheme && typeof window.PixelTheme.init === 'function') {
                 window.PixelTheme.init({
                     enableScanlines: true,
-                    enableArcadeFrame: true,
+                    enableArcadeFrame: false,
                     enableParticles: true,
                     enableGlitchEffect: true,
                     enableCounterAnimation: true,
@@ -174,6 +173,7 @@
     </script>
 </body>
 </html>
+
 
 
 
