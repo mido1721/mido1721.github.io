@@ -131,21 +131,39 @@
     <script src="script/pixel-theme.js"></script>
     <script>
         // Initialize Pixel Theme
-        PixelTheme.init({
-            enableScanlines: true,
-            enableArcadeFrame: true,
-            enableParticles: true,
-            enableGlitchEffect: true,
-            enableCounterAnimation: true,
-            enableSmoothScroll: true,
-            enableSoundEffects: true,
-            particleInterval: 3000,
-            glitchInterval: 5000,
-            debug: false
-        });
-
         // Custom interactions
         document.addEventListener('DOMContentLoaded', function() {
+            // PixelTheme が利用可能になるまで少し待つ
+            if (window.PixelTheme && window.PixelTheme.ready) {
+                PixelTheme.init({
+                    enableScanlines: true,
+                    enableArcadeFrame: true,
+                    enableParticles: true,
+                    enableGlitchEffect: true,
+                    enableCounterAnimation: true,
+                    enableSmoothScroll: true,
+                    enableSoundEffects: true,
+                    particleInterval: 3000,
+                    glitchInterval: 5000,
+                    debug: false
+                });
+            } else {
+                // まだ準備できていない場合は少し待ってから再試行
+                setTimeout(function() {
+                    PixelTheme.init({
+                        enableScanlines: true,
+                        enableArcadeFrame: true,
+                        enableParticles: true,
+                        enableGlitchEffect: true,
+                        enableCounterAnimation: true,
+                        enableSmoothScroll: true,
+                        enableSoundEffects: true,
+                        particleInterval: 3000,
+                        glitchInterval: 5000,
+                        debug: false
+                    });
+                }, 100);
+            }
             // Add click effect to cards
             document.querySelectorAll('.card-pixel').forEach(card => {
                 card.addEventListener('click', function() {
@@ -176,3 +194,4 @@
     </script>
 </body>
 </html>
+
