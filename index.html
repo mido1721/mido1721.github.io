@@ -130,12 +130,10 @@
     <!-- Scripts -->
     <script src="script/pixel-theme.js"></script>
     <script>
-        // Initialize Pixel Theme
-        // Custom interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // PixelTheme が利用可能になるまで少し待つ
-            if (window.PixelTheme && window.PixelTheme.ready) {
-                PixelTheme.init({
+            // 明示的にwindow.PixelThemeを使用
+            if (window.PixelTheme && typeof window.PixelTheme.init === 'function') {
+                window.PixelTheme.init({
                     enableScanlines: true,
                     enableArcadeFrame: true,
                     enableParticles: true,
@@ -147,53 +145,36 @@
                     glitchInterval: 5000,
                     debug: false
                 });
-            } else {
-                // まだ準備できていない場合は少し待ってから再試行
-                setTimeout(function() {
-                    PixelTheme.init({
-                        enableScanlines: true,
-                        enableArcadeFrame: true,
-                        enableParticles: true,
-                        enableGlitchEffect: true,
-                        enableCounterAnimation: true,
-                        enableSmoothScroll: true,
-                        enableSoundEffects: true,
-                        particleInterval: 3000,
-                        glitchInterval: 5000,
-                        debug: false
+                
+                // 他のイベントリスナーでも明示的にwindow.PixelThemeを使用
+                document.querySelectorAll('.card-pixel').forEach(card => {
+                    card.addEventListener('click', function() {
+                        window.PixelTheme.glitch(this);
+                        window.PixelTheme.beep(800, 150);
                     });
-                }, 100);
+                });
+        
+                document.querySelectorAll('.nav-pixel a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        window.PixelTheme.beep(1000, 80);
+                    });
+                });
+        
+                setTimeout(() => window.PixelTheme.burst(30), 1000);
+                
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        window.PixelTheme.burst(5);
+                    }
+                }, 8000);
+            } else {
+                console.error('window.PixelTheme is not available or init method is missing');
             }
-            // Add click effect to cards
-            document.querySelectorAll('.card-pixel').forEach(card => {
-                card.addEventListener('click', function() {
-                    PixelTheme.glitch(this);
-                    PixelTheme.beep(800, 150);
-                });
-            });
-
-            // Welcome effect
-            setTimeout(() => {
-                PixelTheme.burst(30);
-            }, 1000);
-
-            // Periodic particle effects
-            setInterval(() => {
-                if (Math.random() > 0.7) {
-                    PixelTheme.burst(5);
-                }
-            }, 8000);
-
-            // Navigation smooth scroll with sound effects
-            document.querySelectorAll('.nav-pixel a').forEach(link => {
-                link.addEventListener('click', function() {
-                    PixelTheme.beep(1000, 80);
-                });
-            });
         });
     </script>
 </body>
 </html>
+
 
 
 
