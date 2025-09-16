@@ -130,8 +130,7 @@
     <!-- Scripts -->
     <script src="script/pixel-theme.js" defer></script>
     <script defer>
-        document.addEventListener('DOMContentLoaded', function() {
-            // PixelTheme が存在するか確認
+        window.addEventListener("load", function() {
             if (typeof window.PixelTheme !== "undefined" && PixelTheme.init) {
                 // Initialize Pixel Theme
                 PixelTheme.init({
@@ -174,11 +173,11 @@
                     });
                 });
             } else {
-                console.warn("PixelTheme is not loaded yet.");
+                console.error("PixelTheme が読み込まれませんでした");
             }
         });
-        </script>
+    </script>
 </body>
-
 </html>
+
 
