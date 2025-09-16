@@ -83,20 +83,26 @@
 
     <!-- Scripts -->
     <script src="script/pixel-theme.js"></script>
-    <script>
-        // Initialize Pixel Theme
-        PixelTheme.init({
-            enableScanlines: true,
-            enableArcadeFrame: true,
-            enableParticles: true,
-            enableGlitchEffect: true,
-            enableCounterAnimation: true,
-            enableSmoothScroll: true,
-            enableSoundEffects: false,
-            particleInterval: 3000,
-            glitchInterval: 5000,
-            debug: false
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.PixelTheme && typeof window.PixelTheme.init === 'function') {
+                window.PixelTheme.init({
+                    enableScanlines: true,
+                    enableArcadeFrame: false,
+                    enableParticles: true,
+                    enableGlitchEffect: true,
+                    enableCounterAnimation: true,
+                    enableSmoothScroll: true,
+                    enableSoundEffects: false,
+                    particleInterval: 3000,
+                    glitchInterval: 5000,
+                    debug: false
+                });
+            } else {
+                console.error('window.PixelTheme is not available or init method is missing');
+            }
         });
     </script>
+
 </body>
+
 </html>
