@@ -128,52 +128,57 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script/pixel-theme.js"></script>
+    <script src="script/pixel-theme.js" defer></script>
     <script defer>
-        // Initialize Pixel Theme
-        PixelTheme.init({
-            enableScanlines: true,
-            enableArcadeFrame: true,
-            enableParticles: true,
-            enableGlitchEffect: true,
-            enableCounterAnimation: true,
-            enableSmoothScroll: true,
-            enableSoundEffects: true,
-            particleInterval: 3000,
-            glitchInterval: 5000,
-            debug: false
-        });
-
-        // Custom interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click effect to cards
-            document.querySelectorAll('.card-pixel').forEach(card => {
-                card.addEventListener('click', function() {
-                    PixelTheme.glitch(this);
-                    PixelTheme.beep(800, 150);
+            // PixelTheme が存在するか確認
+            if (typeof window.PixelTheme !== "undefined" && PixelTheme.init) {
+                // Initialize Pixel Theme
+                PixelTheme.init({
+                    enableScanlines: true,
+                    enableArcadeFrame: true,
+                    enableParticles: true,
+                    enableGlitchEffect: true,
+                    enableCounterAnimation: true,
+                    enableSmoothScroll: true,
+                    enableSoundEffects: true,
+                    particleInterval: 3000,
+                    glitchInterval: 5000,
+                    debug: false
                 });
-            });
-
-            // Welcome effect
-            setTimeout(() => {
-                PixelTheme.burst(30);
-            }, 1000);
-
-            // Periodic particle effects
-            setInterval(() => {
-                if (Math.random() > 0.7) {
-                    PixelTheme.burst(5);
-                }
-            }, 8000);
+        
+                // Add click effect to cards
+                document.querySelectorAll('.card-pixel').forEach(card => {
+                    card.addEventListener('click', function() {
+                        PixelTheme.glitch(this);
+                        PixelTheme.beep(800, 150);
+                    });
+                });
+        
+                // Welcome effect
+                setTimeout(() => {
+                    PixelTheme.burst(30);
+                }, 1000);
+        
+                // Periodic particle effects
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        PixelTheme.burst(5);
+                    }
+                }, 8000);
+        
+                // Navigation smooth scroll with sound effects
+                document.querySelectorAll('.nav-pixel a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        PixelTheme.beep(1000, 80);
+                    });
+                });
+            } else {
+                console.warn("PixelTheme is not loaded yet.");
+            }
         });
-
-        // Navigation smooth scroll with sound effects
-        document.querySelectorAll('.nav-pixel a').forEach(link => {
-            link.addEventListener('click', function() {
-                PixelTheme.beep(1000, 80);
-            });
-        });
-    </script>
+        </script>
 </body>
 
 </html>
+
