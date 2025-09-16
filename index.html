@@ -131,7 +131,7 @@
     <script src="script/pixel-theme.js" defer></script>
     <script defer>
         window.addEventListener("load", function() {
-            if (window.PixelTheme) {
+            if (window.PixelTheme && typeof PixelTheme.init === "function") {
                 // Initialize Pixel Theme
                 PixelTheme.init({
                     enableScanlines: true,
@@ -174,13 +174,14 @@
                 });
         
             } else {
-                console.error("PixelTheme が読み込まれませんでした");
+                console.error("PixelTheme が正しく読み込まれていません");
             }
         });
     </script>
 
 </body>
 </html>
+
 
 
 
