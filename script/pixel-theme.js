@@ -18,6 +18,23 @@
  * </script>
  */
 
+// シングルトンインスタンスを作成
+const pixelThemeInstance = new PixelTheme();
+
+// グローバルオブジェクトとして即座に公開
+window.PixelTheme = {
+    init: (options) => pixelThemeInstance.init(options),
+    burst: (count) => pixelThemeInstance.burst(count),
+    glitch: (target) => pixelThemeInstance.glitch(target),
+    beep: (frequency, duration) => pixelThemeInstance.playBeep(frequency, duration),
+    config: (config) => pixelThemeInstance.updateConfig(config),
+    destroy: () => pixelThemeInstance.destroy(),
+    getConfig: () => ({ ...pixelThemeInstance.config })
+};
+
+// 即座に利用可能であることを示すフラグ
+window.PixelTheme.ready = true;
+
 class PixelTheme {
     constructor() {
         this.config = {
@@ -430,25 +447,6 @@ class PixelTheme {
     }
 }
 
-
-// シングルトンインスタンスを作成
-const pixelThemeInstance = new PixelTheme();
-
-// グローバルオブジェクトとして公開
-// グローバルオブジェクトとして公開（即座に利用可能にする）
-window.PixelTheme = {
-    init: (options) => pixelThemeInstance.init(options),
-    burst: (count) => pixelThemeInstance.burst(count),
-    glitch: (target) => pixelThemeInstance.glitch(target),
-    beep: (frequency, duration) => pixelThemeInstance.playBeep(frequency, duration),
-    config: (config) => pixelThemeInstance.updateConfig(config),
-    destroy: () => pixelThemeInstance.destroy(),
-    getConfig: () => ({ ...pixelThemeInstance.config })
-};
-
-// 即座に利用可能であることを示すフラグ
-window.PixelTheme.ready = true;
-
 // CommonJS/ES Modules対応
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = window.PixelTheme;
@@ -466,8 +464,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Download page welcome effect
     setTimeout(() => {
-        PixelTheme.burst(25);
-    }, 800);
+        if (window.PixelTheme && pixelThemeInstance.isInitialized) {
+            window.PixelTheme.burst(25);
+        }
+    }, 100);
 });
 
 /**
@@ -532,4 +532,5 @@ document.addEventListener('DOMContentLoaded', function() {
  * - .arcade-frame: アーケードフレーム（自動生成可能）
 
  */
+
 
