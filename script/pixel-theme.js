@@ -470,8 +470,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 800);
 });
 
-window.PixelTheme = new PixelTheme();
-
 /**
  * 使用例とAPI Documentation
  * 
@@ -534,3 +532,4 @@ window.PixelTheme = new PixelTheme();
  * - .arcade-frame: アーケードフレーム（自動生成可能）
 
  */
+
